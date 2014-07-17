@@ -33,11 +33,12 @@ class Save{
 	}
 	
 	public function saveContent(){
-		/*if(!file_exists($this->path)){
-			mkdir($this->path);
-		}
-		
-		file_put_contents($this->filePath, $this->content);*/
+		$date = date('d-m-y');
+		$data = "INSERT INTO neu_tb (title, content, date) VALUES ('$this->title', '$this->content', '$date')";
+		$connect = new ConnectToDB($data);
+		$connect->init();
+		$error = $connect->saveContent();
+		echo $data;
 		
 	}
 	
